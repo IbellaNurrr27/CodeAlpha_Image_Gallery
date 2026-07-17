@@ -18,12 +18,10 @@
     --grey:#84848f;
     --ease:cubic-bezier(.16,.84,.32,1);
     
-    /* Global visual style variables */
     --img-filter: grayscale(0.2) contrast(1.05) brightness(0.92);
     --img-hover-filter: grayscale(0) contrast(1.05) brightness(1);
   }
   
-  /* Visual Effect Themes */
   body[data-fx="noir"] {
     --img-filter: grayscale(1) contrast(1.2) brightness(0.85);
     --img-hover-filter: grayscale(1) contrast(1.3) brightness(1);
@@ -52,13 +50,12 @@
   @media (hover:none){ body{cursor:auto;} }
   @media (prefers-reduced-motion: reduce){ *{animation-duration:0.001ms !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;} }
 
-  /* grain overlay */
   .grain{
     position:fixed; inset:0; z-index:200; pointer-events:none;
     opacity:0.05; mix-blend-mode:overlay;
   }
 
-  /* custom cursor */
+  
   .cursor{
     position:fixed; top:0; left:0; z-index:300;
     width:14px; height:14px; border-radius:50%;
@@ -75,7 +72,7 @@
   .cursor.drag{ width:64px; height:64px; background:var(--coral); }
   @media (hover:none){ .cursor{display:none;} }
 
-  /* ===== top bar ===== */
+  
   .topbar{
     position:fixed; top:0; left:0; right:0; z-index:50;
     display:flex; justify-content:space-between; align-items:center;
@@ -91,7 +88,7 @@
     color:var(--paper); text-transform:uppercase;
   }
 
-  /* ===== hero ===== */
+ 
   .hero{
     position:relative;
     min-height:90vh;
@@ -152,7 +149,7 @@
     font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--grey);
   }
 
-  /* marquee */
+ 
   .marquee{
     border-top:1px solid var(--hair); border-bottom:1px solid var(--hair);
     padding:14px 0; overflow:hidden; white-space:nowrap;
@@ -171,7 +168,7 @@
   }
   .marquee-track span i{ color:var(--lime); font-style:normal; }
 
-  /* ===== controls layout ===== */
+ 
   .controls-block{
     display:flex; flex-direction:column; gap:16px;
     padding:40px clamp(20px,4vw,48px) 10px;
@@ -194,7 +191,7 @@
   .filter-btn:hover{ border-color:var(--paper); color:var(--paper); }
   .filter-btn.active{ background:var(--paper); border-color:var(--paper); color:var(--ink); font-weight:700; }
   
-  /* FX filter configuration */
+  
   .fx-btn{
     font-family:'Space Grotesk',sans-serif; font-size:12px; font-weight:500;
     background:transparent; border:1px solid var(--hair);
@@ -209,7 +206,7 @@
   }
   .count-badge b{ color:var(--coral); }
 
-  /* ===== smaller compact gallery ===== */
+  
   .gallery-wrap{
     padding:10px clamp(20px,4vw,48px) 40px;
   }
@@ -231,7 +228,7 @@
   .gallery::-webkit-scrollbar{ height:4px; }
   .gallery::-webkit-scrollbar-thumb{ background:var(--hair); border-radius:4px; }
 
-  /* Compact Gallery card dimensions */
+
   .card{
     position:relative;
     flex:0 0 auto;
@@ -301,7 +298,7 @@
     text-transform:uppercase;
   }
 
-  /* ===== lightbox ===== */
+  
   .lightbox{
     position:fixed; inset:0; z-index:150; display:none;
     background:var(--ink);
@@ -547,7 +544,7 @@
     initCursorHoverStates();
   }
 
-  /* Category Selection Filter Logic */
+  
   filters.addEventListener('click', e=>{
     const btn = e.target.closest('.filter-btn');
     if(!btn) return;
@@ -567,7 +564,7 @@
     countBadge.innerHTML = 'SHOWING <b>' + shown + '</b> / ' + DATA.length;
   });
 
-  /* Visual Post-Processing CSS Preset Filter Logic */
+ 
   fxFilters.addEventListener('click', e=>{
     const btn = e.target.closest('.fx-btn');
     if(!btn) return;
@@ -582,7 +579,6 @@
     }
   });
 
-  /* Horizontal Filmstrip Drag Mechanics */
   let isDown = false, startX, scrollLeft, wasDragging = false, moved = 0;
   gallery.addEventListener('mousedown', e=>{
     isDown = true; moved = 0;
@@ -606,7 +602,7 @@
     gallery.scrollLeft = scrollLeft - walk;
   });
 
-  /* Custom Cursor Dynamic tracking */
+ 
   window.addEventListener('mousemove', e=>{
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
@@ -622,7 +618,7 @@
   gallery.addEventListener('mouseenter', ()=> cursor.classList.add('drag'));
   gallery.addEventListener('mouseleave', ()=> cursor.classList.remove('drag'));
 
-  /* Live Clock Header Output */
+ 
   function updateClock(){
     const el = document.getElementById('clock');
     const d = new Date();
@@ -632,7 +628,7 @@
   }
   updateClock(); setInterval(updateClock, 10000);
 
-  /* ===== Lightbox System Logic ===== */
+  
   const lightbox = document.getElementById('lightbox');
   const lbImg = document.getElementById('lbImg');
   const lbBg = document.getElementById('lbBg');
